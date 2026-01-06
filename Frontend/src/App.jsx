@@ -21,25 +21,26 @@ import LearningPlatform from './components/Dashboard/LearningHub';
 import BlogPlatform from './components/Blogs/BlogPlatform';
 import Achievements from './components/Dashboard/Achievements';
 import AIChatbot from './components/Chatbot/AiChatBot';
+import ScrollToTop from './components/shared/ScrollToTop';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element = {<Landing />} />
+        <Route path='/' element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path='/verify-email' element={<VerifyEmail />} />
         <Route path="/domain-selection" element={<DomainSelection />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
-        
-        <Route 
-          path="/dashboard" 
+
+        <Route
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          } 
+          }
         />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/history" element={<ReviewHistory />} />
@@ -47,36 +48,37 @@ function App() {
         <Route path='settings' element={<Settings />} />
         <Route path="/blog" element={<BlogPlatform />} />
         <Route path='/achievements' element={<Achievements />} />
-        <Route 
-        path="/interview-setup" 
-        element={
-          <ProtectedRoute>
-            <InterviewSetup />
-          </ProtectedRoute>
-        } 
-      />
-      
-      {/* UPDATED: Use InterviewWrapper instead of InterviewRoom directly */}
-      <Route 
-        path="/interview/:interviewId" 
-        element={
-          <ProtectedRoute>
-            <InterviewWrapper  />
-          </ProtectedRoute>
-        } 
-      />
-      <Route path="/interview-room/:interviewId" element={<InterviewRoom />} />
-      
-      <Route 
-        path="/results/:interviewId" 
-        element={
-          <ProtectedRoute>
-            <Results />
-          </ProtectedRoute>
-        } 
-      />
+        <Route
+          path="/interview-setup"
+          element={
+            <ProtectedRoute>
+              <InterviewSetup />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* UPDATED: Use InterviewWrapper instead of InterviewRoom directly */}
+        <Route
+          path="/interview/:interviewId"
+          element={
+            <ProtectedRoute>
+              <InterviewWrapper />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/interview-room/:interviewId" element={<InterviewRoom />} />
+
+        <Route
+          path="/results/:interviewId"
+          element={
+            <ProtectedRoute>
+              <Results />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
 
+      <ScrollToTop />
       <AIChatbot defaultContext="general" />
     </>
   );

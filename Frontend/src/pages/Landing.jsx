@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import {Link, useNavigate} from "react-router-dom"
-import {logo} from "../assets/intervyologo.png"
+import { Link, useNavigate } from "react-router-dom"
+import logo from "../assets/intervyologo.png"
 
 
 export default function LandingPage() {
@@ -10,7 +10,7 @@ export default function LandingPage() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  const {token} = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const naviagte = useNavigate();
 
@@ -19,10 +19,10 @@ export default function LandingPage() {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
-    
+
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
       (entries) => {
@@ -185,7 +185,7 @@ export default function LandingPage() {
       `}</style>
 
       {/* Animated Cursor Effect */}
-      <div 
+      <div
         className="fixed w-96 h-96 rounded-full pointer-events-none z-0 mix-blend-screen"
         style={{
           background: 'radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%)',
@@ -205,7 +205,7 @@ export default function LandingPage() {
               </div>
               <span className="text-xl font-bold">Intervyo</span>
             </div>
-            
+
             <div className="hidden md:flex items-center gap-8">
               <a href="#features" className="hover:text-purple-400 transition">Features</a>
               <a href="#how-it-works" className="hover:text-purple-400 transition">How It Works</a>
@@ -213,7 +213,7 @@ export default function LandingPage() {
               <a href="#testimonials" className="hover:text-purple-400 transition">Testimonials</a>
             </div>
 
-            { token === null && 
+            {token === null &&
               <div className="flex items-center gap-4">
                 <Link to={"/login"} className="px-4 py-2 text-sm hover:text-purple-400 transition">Sign In</Link>
                 <Link to={"/register"} className="px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition transform hover:scale-105">
@@ -238,7 +238,7 @@ export default function LandingPage() {
           <div className="mb-6 inline-block px-6 py-2 bg-purple-500/20 backdrop-blur-lg rounded-full border border-purple-500/30">
             <span className="text-purple-300 text-sm font-semibold">🚀 AI-Powered Interview Preparation</span>
           </div>
-          
+
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Master Your Next
             <br />
@@ -246,7 +246,7 @@ export default function LandingPage() {
               Tech Interview
             </span>
           </h1>
-          
+
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Practice with our AI interviewer, get instant feedback, and land your dream job at top tech companies
           </p>
@@ -402,9 +402,8 @@ export default function LandingPage() {
                   <button
                     key={index}
                     onClick={() => setActiveTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition ${
-                      activeTestimonial === index ? 'bg-purple-500 w-8' : 'bg-white/30'
-                    }`}
+                    className={`w-3 h-3 rounded-full transition ${activeTestimonial === index ? 'bg-purple-500 w-8' : 'bg-white/30'
+                      }`}
                   />
                 ))}
               </div>
@@ -427,9 +426,8 @@ export default function LandingPage() {
                 key={index}
                 id={`plan-${index}`}
                 data-animate
-                className={`scale-in ${isVisible[`plan-${index}`] ? 'visible' : ''} relative bg-white/5 backdrop-blur-lg rounded-2xl p-8 border ${
-                  plan.popular ? 'border-purple-500 shadow-2xl shadow-purple-500/20' : 'border-white/10'
-                } hover:border-purple-500/50 transition`}
+                className={`scale-in ${isVisible[`plan-${index}`] ? 'visible' : ''} relative bg-white/5 backdrop-blur-lg rounded-2xl p-8 border ${plan.popular ? 'border-purple-500 shadow-2xl shadow-purple-500/20' : 'border-white/10'
+                  } hover:border-purple-500/50 transition`}
                 style={{ transitionDelay: `${index * 0.15}s` }}
               >
                 {plan.popular && (
@@ -437,13 +435,13 @@ export default function LandingPage() {
                     Most Popular
                   </div>
                 )}
-                
+
                 <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                 <div className="mb-6">
                   <span className="text-5xl font-bold">{plan.price}</span>
                   <span className="text-gray-400">{plan.period}</span>
                 </div>
-                
+
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-center gap-2">
@@ -452,12 +450,11 @@ export default function LandingPage() {
                     </li>
                   ))}
                 </ul>
-                
-                <button className={`w-full py-3 rounded-xl font-semibold transition transform hover:scale-105 ${
-                  plan.popular
+
+                <button className={`w-full py-3 rounded-xl font-semibold transition transform hover:scale-105 ${plan.popular
                     ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700'
                     : 'bg-white/10 hover:bg-white/20 border border-white/20'
-                }`}>
+                  }`}>
                   {plan.buttonText}
                 </button>
               </div>
@@ -492,7 +489,7 @@ export default function LandingPage() {
               </div>
               <p className="text-gray-400">Master your tech interviews with AI</p>
             </div>
-            
+
             <div>
               <h4 className="font-bold mb-4">Product</h4>
               <ul className="space-y-2 text-gray-400">
@@ -501,7 +498,7 @@ export default function LandingPage() {
                 <li><a href="#" className="hover:text-white transition">FAQ</a></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-bold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-400">
@@ -510,7 +507,7 @@ export default function LandingPage() {
                 <li><a href="#" className="hover:text-white transition">Careers</a></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-bold mb-4">Legal</h4>
               <ul className="space-y-2 text-gray-400">
@@ -520,7 +517,7 @@ export default function LandingPage() {
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-white/10 pt-8 text-center text-gray-400">
             <p>&copy; 2024 InterviewPro. All rights reserved.</p>
           </div>
