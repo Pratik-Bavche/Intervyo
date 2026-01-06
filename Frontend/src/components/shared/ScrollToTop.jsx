@@ -1,50 +1,79 @@
-import React, { useState, useEffect } from "react";
-import { ArrowUp } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { FaArrowUp } from 'react-icons/fa';
 
 const ScrollToTop = () => {
-    const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
-    // Toggle visibility based on scroll position
-    useEffect(() => {
-        const toggleVisibility = () => {
-            if (window.scrollY > 300) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
-
-        window.addEventListener("scroll", toggleVisibility);
-
-        return () => window.removeEventListener("scroll", toggleVisibility);
-    }, []);
-
-    // Scroll to top smoothly
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-    };
-
-    if (!isVisible) {
-        return null;
+  // Show button when page is scrolled down
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
     }
+  };
 
-    return (
+  // Scroll to top smoothly
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility);
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
+  }, []);
+
+  // Button styles - Positioned on the LEFT side to avoid chatbot overlap
+  const buttonStyles = {
+    position: 'fixed',
+    bottom: '30px',
+    left: '30px', // Changed from right to left
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    backgroundColor: isHovered ? '#0056b3' : '#007bff',
+    color: 'white',
+    border: 'none',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: isHovered ? '0 6px 12px rgba(0, 0, 0, 0.3)' : '0 4px 8px rgba(0, 0, 0, 0.2)',
+    zIndex: 9999,
+    transition: 'all 0.3s ease',
+    opacity: isHovered ? 1 : 0.9,
+    transform: isHovered ? 'translateY(-3px)' : 'none',
+    outline: 'none'
+  };
+
+  // Icon styles
+  const iconStyles = {
+    fontSize: '20px',
+    transition: 'transform 0.3s ease',
+    transform: isHovered ? 'translateY(-2px)' : 'none'
+  };
+
+  return (
+    <>
+      {isVisible && (
         <button
-            onClick={scrollToTop}
-            className="fixed bottom-[100px] right-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl flex items-center justify-center animate-bounce-slow"
-            aria-label="Scroll to top"
-            style={{
-                width: '60px',
-                height: '60px',
-                zIndex: 1001,
-            }}
+          onClick={scrollToTop}
+          style={buttonStyles}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          aria-label="Scroll to top"
         >
-            <ArrowUp size={28} />
+          <FaArrowUp style={iconStyles} />
         </button>
-    );
+      )}
+    </>
+  );
 };
 
 export default ScrollToTop;

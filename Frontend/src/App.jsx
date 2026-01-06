@@ -12,15 +12,16 @@ import DomainSelection from './pages/DomainSelection';
 import InterviewRoom from './components/AiInterview/InterviewRoom';
 import Results from './pages/Results';
 import Settings from './components/Dashboard/Settings';
-import toast from 'react-hot-toast'
 import InterviewWrapper from './components/Interview/InterviewWrapper';
 import Leaderboard from './pages/Leaderboard';
 import ReviewHistory from './components/Dashboard/ReviewHistory';
 import LearningHub from './components/Dashboard/LearningHub';
-import LearningPlatform from './components/Dashboard/LearningHub';
 import BlogPlatform from './components/Blogs/BlogPlatform';
 import Achievements from './components/Dashboard/Achievements';
 import AIChatbot from './components/Chatbot/AiChatBot';
+import FAQ from "./pages/FAQ";
+import Analytics from './pages/Analytics';
+import NotFound from './pages/NotFound';
 import ScrollToTop from './components/shared/ScrollToTop';
 
 function App() {
@@ -33,9 +34,10 @@ function App() {
         <Route path='/verify-email' element={<VerifyEmail />} />
         <Route path="/domain-selection" element={<DomainSelection />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
-
-        <Route
-          path="/dashboard"
+        <Route path="/faq" element={<FAQ />} />
+        
+        <Route 
+          path="/dashboard" 
           element={
             <ProtectedRoute>
               <Dashboard />
@@ -45,7 +47,7 @@ function App() {
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/history" element={<ReviewHistory />} />
         <Route path="/resources" element={<LearningHub />} />
-        <Route path='settings' element={<Settings />} />
+        <Route path='/settings' element={<Settings />} />
         <Route path="/blog" element={<BlogPlatform />} />
         <Route path='/achievements' element={<Achievements />} />
         <Route
