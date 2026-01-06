@@ -2,6 +2,54 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../assets/intervyologo.png"
+import {Link, useNavigate} from "react-router-dom"
+// Logo asset (imported as default if needed in future UI tweaks)
+import logo from "../assets/intervyologo.png";
+import {
+  Bot,
+  BarChart3,
+  Code,
+  Database,
+  Cpu,
+  Smartphone,
+  Wrench,
+  Target,
+  TrendingUp,
+  Trophy,
+  Users,
+  Star,
+  Play,
+  User,
+  UserRound,
+  Briefcase,
+  GraduationCap,
+  Globe,
+  ArrowRight,
+  Check,
+  Award,
+  Zap,
+  Lightbulb,
+  Rocket,
+  Settings,
+  Monitor,
+  Server,
+  SmartphoneIcon,
+  Cloud,
+  Shield,
+  Lock,
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  Clock,
+  FileText,
+  PieChart,
+  BarChart,
+  TrendingUpIcon,
+  Users2,
+  FileBarChart,
+  StarIcon
+} from 'lucide-react';
 
 
 export default function LandingPage() {
@@ -48,25 +96,25 @@ export default function LandingPage() {
 
   const features = [
     {
-      icon: '🤖',
+      icon: <Bot className="w-10 h-10" />, // AI-Powered Interviews
       title: 'AI-Powered Interviews',
       description: 'Experience realistic interviews with our advanced AI interviewer',
       gradient: 'from-purple-500 to-pink-500'
     },
     {
-      icon: '📊',
+      icon: <BarChart3 className="w-10 h-10" />, // Real-Time Analytics
       title: 'Real-Time Analytics',
       description: 'Get instant feedback on your performance with detailed metrics',
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: '🎯',
+      icon: <Target className="w-10 h-10" />, // Domain-Specific Prep
       title: 'Domain-Specific Prep',
       description: 'Practice for Frontend, Backend, Data Science & more',
       gradient: 'from-green-500 to-emerald-500'
     },
     {
-      icon: '🏆',
+      icon: <Trophy className="w-10 h-10" />, // Gamified Learning
       title: 'Gamified Learning',
       description: 'Earn XP, unlock badges, and compete on leaderboards',
       gradient: 'from-yellow-500 to-orange-500'
@@ -77,21 +125,21 @@ export default function LandingPage() {
     {
       name: 'Sarah Chen',
       role: 'Software Engineer at Google',
-      image: '👩‍💻',
+      image: <UserRound className="w-10 h-10" />,
       text: 'This platform helped me land my dream job! The AI interviewer felt incredibly real.',
       rating: 5
     },
     {
       name: 'Mike Johnson',
       role: 'Data Scientist at Amazon',
-      image: '👨‍💼',
+      image: <UserRound className="w-10 h-10" />,
       text: 'The instant feedback and analytics were game-changers for my interview prep.',
       rating: 5
     },
     {
       name: 'Priya Sharma',
       role: 'Full Stack Developer at Microsoft',
-      image: '👩‍🔬',
+      image: <UserRound className="w-10 h-10" />,
       text: 'I improved my confidence by 10x. The practice sessions were incredibly valuable.',
       rating: 5
     }
@@ -105,12 +153,12 @@ export default function LandingPage() {
   ];
 
   const domains = [
-    { name: 'Frontend', icon: '🎨', color: 'bg-pink-500' },
-    { name: 'Backend', icon: '⚙️', color: 'bg-blue-500' },
-    { name: 'Full Stack', icon: '🚀', color: 'bg-purple-500' },
-    { name: 'Data Science', icon: '📊', color: 'bg-green-500' },
-    { name: 'DevOps', icon: '🔧', color: 'bg-orange-500' },
-    { name: 'Mobile', icon: '📱', color: 'bg-indigo-500' }
+    { name: 'Frontend', icon: <Code className="w-8 h-8" />, color: 'bg-pink-500' },
+    { name: 'Backend', icon: <Server className="w-8 h-8" />, color: 'bg-blue-500' },
+    { name: 'Full Stack', icon: <Globe className="w-8 h-8" />, color: 'bg-purple-500' },
+    { name: 'Data Science', icon: <Database className="w-8 h-8" />, color: 'bg-green-500' },
+    { name: 'DevOps', icon: <Wrench className="w-8 h-8" />, color: 'bg-orange-500' },
+    { name: 'Mobile', icon: <Smartphone className="w-8 h-8" />, color: 'bg-indigo-500' }
   ];
 
   const pricingPlans = [
@@ -393,9 +441,9 @@ export default function LandingPage() {
 
           <div className="space-y-8 md:space-y-12">
             {[
-              { step: '01', title: 'Choose Your Domain', desc: 'Select from Frontend, Backend, Data Science, and more', icon: '🎯' },
-              { step: '02', title: 'Start AI Interview', desc: 'Experience realistic interviews with our advanced AI', icon: '🤖' },
-              { step: '03', title: 'Get Instant Feedback', desc: 'Receive detailed analytics and improvement suggestions', icon: '📊' }
+              { step: '01', title: 'Choose Your Domain', desc: 'Select from Frontend, Backend, Data Science, and more', icon: <Target className="w-10 h-10" /> },
+              { step: '02', title: 'Start AI Interview', desc: 'Experience realistic interviews with our advanced AI', icon: <Bot className="w-10 h-10" /> },
+              { step: '03', title: 'Get Instant Feedback', desc: 'Receive detailed analytics and improvement suggestions', icon: <BarChart3 className="w-10 h-10" /> }
             ].map((item, index) => (
               <div
                 key={index}

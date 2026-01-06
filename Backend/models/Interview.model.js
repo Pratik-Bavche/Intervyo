@@ -344,4 +344,4 @@ InterviewSchema.index({ userId: 1, status: 1 });
 InterviewSchema.index({ createdAt: -1 });
 InterviewSchema.index({ "performance.overallScore": -1 });
 
-export default mongoose.model("Interview", InterviewSchema);
+module.exports =  mongoose.model("Interview", InterviewSchema);
